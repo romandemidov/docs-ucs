@@ -1,10 +1,11 @@
-name: Publish apps
-run-name: Version ${{ github.event.client_payload.tag }}
+name: Publish apps 
+run-name: Version ${{ github.ref_name }}
 
 on:
-  repository_dispatch:
-    types: [dockerhub-tag]
-
+  push:
+    tags:
+       - '*'
+    
 jobs:
   check-apps:
     runs-on: ubuntu-latest
@@ -40,12 +41,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-
+      
+      - name: Set version
+        run: echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+      
       - name: Publish App
         env:
           username: ${{ secrets.PORTAL_USER }}
           passfile: ${{ runner.temp }}/pwdfile
-          version: ${{ github.event.client_payload.tag }}
+          version: ${{ env.version }}
         run: |
           echo "${{ secrets.PORTAL_PWD }}" > $passfile
           cd ./apps/${{ matrix.app_dir }}
