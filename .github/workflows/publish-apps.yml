@@ -43,7 +43,7 @@ jobs:
           python-version: '3.x'
       
       - name: Set version
-        run: echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+        run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
       
       - name: Publish App
         env:
