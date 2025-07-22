@@ -13,5 +13,5 @@ jobs:
 
       - name: Work
         run: |
-          apt install virtualbox virtualbox-ext-pack
+          sudo apt install -y virtualbox virtualbox-ext-pack
 
