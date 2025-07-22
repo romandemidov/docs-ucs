@@ -1,0 +1,17 @@
+name: Test apps 
+run-name: Test ${{ github.ref_name }}
+
+on:
+  workflow_dispatch
+    
+jobs:
+  test-apps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Work
+        run: |
+          apt install virtualbox virtualbox-ext-pack
+
