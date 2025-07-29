@@ -16,9 +16,13 @@ jobs:
           echo virtualbox-ext-pack virtualbox-ext-pack/license select true | sudo debconf-set-selections
           sudo apt install -y virtualbox virtualbox-ext-pack
           cd /tmp
-          wget https://updates.software-univention.de/download/images/UCS-Virtualbox-Image.ova
+          echo "RFX: wget"
+          wget --progress=dot:giga https://updates.software-univention.de/download/images/UCS-Virtualbox-Image.ova
+          echo "RFX: ls"
           ls
-          VBoxManage import ./UCS-Virtualbox-Image.ova --vsys 0 --eula accept
+          echo "RFX: import"
+          VBoxManage import /tmp/UCS-Virtualbox-Image.ova --vsys 0 --eula accept
+          ping -c 10 127.0.0.1
           VBoxManage list vms
           VBoxManage startvm "UCS 5.2-2"
 
