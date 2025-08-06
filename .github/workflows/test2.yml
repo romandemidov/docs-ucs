@@ -1,0 +1,30 @@
+name: Test apps 2
+run-name: Test ${{ github.ref_name }} 2
+
+on:
+  workflow_dispatch
+    
+jobs:
+  test-apps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Work
+        run: |
+          echo virtualbox-ext-pack virtualbox-ext-pack/license select true | sudo debconf-set-selections
+          sudo apt install -y virtualbox virtualbox-ext-pack
+          cd /tmp
+          echo "RFX: wget"
+          wget --progress=dot:giga https://updates.software-univention.de/download/images/UCS-Virtualbox-Image.ova
+          echo "RFX: ls"
+          ls
+          echo "RFX: import"
+          sudo VBoxManage import /tmp/UCS-Virtualbox-Image.ova --vsys 0 --eula accept
+          #ping -c 10 127.0.0.1
+          echo "RFX: list"
+          sudo VBoxManage list vms
+          echo "RFX: start"
+          sudo VBoxManage startvm "UCS 5.2-2" --type headless
+
