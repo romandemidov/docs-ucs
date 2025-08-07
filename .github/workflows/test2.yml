@@ -13,5 +13,7 @@ jobs:
 
       - name: Work
         run: |
-          echo "test1"
+          echo virtualbox-ext-pack virtualbox-ext-pack/license select true | sudo debconf-set-selections
+          echo "RFX: install VB"
+          sudo apt install -y virtualbox virtualbox-ext-pack
 
