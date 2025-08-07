@@ -14,5 +14,5 @@ jobs:
       - name: Work
         run: |
           echo virtualbox-ext-pack virtualbox-ext-pack/license select true | sudo debconf-set-selections
-          sudo apt install -y virtualbox virtualbox-ext-pack
+          sudo apt install -y virtualbox
 
