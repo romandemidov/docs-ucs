@@ -18,10 +18,10 @@ jobs:
           cd /tmp
           echo "RFX: wget"
           #wget --progress=dot:giga https://updates.software-univention.de/download/images/UCS-Virtualbox-Image.ova
-          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/yz0zh-6SRiCUgg
-          mv yz0zh-6SRiCUgg USC-VB-Image.part.aa
-          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/hM9uaTDPFwzpvQ
-          mv hM9uaTDPFwzpvQ USC-VB-Image.part.ab
+          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/jvXNwpHD1K-NQg
+          mv jvXNwpHD1K-NQg USC-VB-Image.part.aa
+          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/FTZW2zzylhwFeg
+          mv FTZW2zzylhwFeg USC-VB-Image.part.ab
           echo "RFX: cat"
           cat USC-VB-Image.part.* > UCS-Virtualbox-Image.ova
           echo "RFX: ls"
