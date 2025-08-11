@@ -19,10 +19,10 @@ jobs:
           ip addr
           echo "RFX: wget"
           #wget --progress=dot:giga https://updates.software-univention.de/download/images/UCS-Virtualbox-Image.ova
-          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/lXogIl348sFBWw
-          mv lXogIl348sFBWw USC-VB-Image.part.aa
-          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/yxYi2eeh24vrvA
-          mv yxYi2eeh24vrvA USC-VB-Image.part.ab
+          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/Kes126V9bqIlpw
+          mv Kes126V9bqIlpw USC-VB-Image.part.aa
+          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/9icRxfNS1JtCoA
+          mv 9icRxfNS1JtCoA USC-VB-Image.part.ab
           echo "RFX: cat"
           cat USC-VB-Image.part.* > UCS-Virtualbox-Image.ova
           echo "RFX: ls"
@@ -36,27 +36,6 @@ jobs:
           sudo VBoxManage startvm "UCS 5.2-2" --type headless
           ping -c 20 127.0.0.1
           echo "RFX: run"
-          echo "\nroot\n" > run.txt
-          sudo VBoxManage controlvm "UCS 5.2-2" keyboardputfile ./run.txt
-          ping -c 1 127.0.0.1
-          echo "onlyoffice\n" > run.txt
-          sudo VBoxManage controlvm "UCS 5.2-2" keyboardputfile ./run.txt
-          ping -c 1 127.0.0.1
-          echo "apt install -y build-essential virtualbox-guest-additions-iso\n" > run.txt
-          sudo VBoxManage controlvm "UCS 5.2-2" keyboardputfile ./run.txt
-          ping -c 40 127.0.0.1
-          echo "mkdir -p /mnt/lp1\n" > run.txt
-          sudo VBoxManage controlvm "UCS 5.2-2" keyboardputfile ./run.txt
-          ping -c 1 127.0.0.1
-          echo "mount -o loop /usr/share/virtualbox/VBoxGuestAdditions.iso /mnt/lp1\n" > run.txt
-          sudo VBoxManage controlvm "UCS 5.2-2" keyboardputfile ./run.txt
-          ping -c 5 127.0.0.1
-          echo "/mnt/lp1/VBoxLinuxAdditions.run\n" > run.txt
-          sudo VBoxManage controlvm "UCS 5.2-2" keyboardputfile ./run.txt
-          ping -c 10 127.0.0.1
-          echo "reboot\n" > run.txt
-          sudo VBoxManage controlvm "UCS 5.2-2" keyboardputfile ./run.txt
-          ping -c 30 127.0.0.1
           echo "RFX: get ip"
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
 
