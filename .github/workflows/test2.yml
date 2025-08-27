@@ -18,6 +18,6 @@ jobs:
           wget -O virtualbox.deb https://download.virtualbox.org/virtualbox/7.1.4/virtualbox-7.1_7.1.4-165100~Ubuntu~jammy_amd64.deb
           wget https://download.virtualbox.org/virtualbox/7.1.4/Oracle_VirtualBox_Extension_Pack-7.1.4.vbox-extpack
           sudo apt install -y -f ./virtualbox.deb
-          sudo VBoxManage extpack install ./Oracle_VirtualBox_Extension_Pack-7.1.4.vbox-extpack
+          sudo yes | VBoxManage extpack install ./Oracle_VirtualBox_Extension_Pack-7.1.4.vbox-extpack
           virtualbox --help
 
