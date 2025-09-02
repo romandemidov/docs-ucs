@@ -19,12 +19,12 @@ jobs:
           ip addr
           echo "RFX: wget"
           #wget --progress=dot:giga https://updates.software-univention.de/download/images/UCS-Virtualbox-Image.ova
-          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/fiCSr_fOqZSfSg
-          mv fiCSr_fOqZSfSg USC-VB-Image.part.aa
-          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/IjzDcJCFZ77eaQ
-          mv IjzDcJCFZ77eaQ USC-VB-Image.part.ab
-          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/xZ5iNuFC6Q0kiA
-          mv xZ5iNuFC6Q0kiA USC-VB-Image.part.ac
+          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/_09KMX9vKWP5gw
+          mv _09KMX9vKWP5gw USC-VB-Image.part.aa
+          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/ncp8pixFFc9Q6w
+          mv ncp8pixFFc9Q6w USC-VB-Image.part.ab
+          #wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/xZ5iNuFC6Q0kiA
+          #mv xZ5iNuFC6Q0kiA USC-VB-Image.part.ac
           echo "RFX: cat"
           cat USC-VB-Image.part.* > UCS-Virtualbox-Image.ova
           echo "RFX: ls"
