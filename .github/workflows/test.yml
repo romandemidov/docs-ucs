@@ -39,5 +39,5 @@ jobs:
           ping -c 60 127.0.0.1
           echo "RFX: run"
           echo "RFX: get ip"
-          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- -4 addr
+          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
 
