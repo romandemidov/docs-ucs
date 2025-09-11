@@ -49,4 +49,5 @@ jobs:
           echo "RFX: ping"
           ping -c 10 10.1.0.65
           #curl -v http://$IP_ADDRESS/univention/portal/
+          curl -v http://10.1.0.65/univention/portal/
 
