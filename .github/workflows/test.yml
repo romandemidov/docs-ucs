@@ -41,7 +41,12 @@ jobs:
           echo "RFX: get ip"
           IP_ADDRESS=$(sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
           echo $IP_ADDRESS
+          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- addr add 10.1.0.65/20 dev eth0
+          echo "RFX: dhcp1"
+          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route add default via 10.1.0.1
+          echo "RFX: dhcp2"
+          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- -4 addr show eth0
           echo "RFX: ping"
-          ping -c 10 $IP_ADDRESS
+          ping -c 10 10.1.0.65
           #curl -v http://$IP_ADDRESS/univention/portal/
 
