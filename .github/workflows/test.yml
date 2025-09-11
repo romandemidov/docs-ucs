@@ -19,10 +19,10 @@ jobs:
           ip addr
           echo "RFX: wget"
           #wget --progress=dot:giga https://updates.software-univention.de/download/images/UCS-Virtualbox-Image.ova
-          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/_09KMX9vKWP5gw
-          mv _09KMX9vKWP5gw USC-VB-Image.part.aa
-          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/ncp8pixFFc9Q6w
-          mv ncp8pixFFc9Q6w USC-VB-Image.part.ab
+          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/6MAy0y5T4SWEnw
+          mv 6MAy0y5T4SWEnw USC-VB-Image.part.aa
+          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/635cjc67GWdgjg
+          mv 635cjc67GWdgjg USC-VB-Image.part.ab
           #wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/xZ5iNuFC6Q0kiA
           #mv xZ5iNuFC6Q0kiA USC-VB-Image.part.ac
           echo "RFX: cat"
@@ -41,17 +41,7 @@ jobs:
           echo "RFX: get ip"
           IP_ADDRESS=$(sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
           echo $IP_ADDRESS
-          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/route" --username root --password onlyoffice --wait-stdout -- add default gw 10.1.0.1
-          echo "RFX: dhcp1"
-          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/dhclient" --username root --password onlyoffice --wait-stdout -- 
-          echo "RFX: dhcp2"
-          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/dhclient" --username root --password onlyoffice --wait-stdout -- -r
-          echo "RFX: dhcp3"
-          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/dhclient" --username root --password onlyoffice --wait-stdout -- 
-          echo "RFX: dhcp4"
-          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/dhclient" --username root --password onlyoffice --wait-stdout -- 
-          #echo $IP_ADDRESS
-          #echo "RFX: ping"
-          #ping -c 10 $IP_ADDRESS
+          echo "RFX: ping"
+          ping -c 10 $IP_ADDRESS
           #curl -v http://$IP_ADDRESS/univention/portal/
 
