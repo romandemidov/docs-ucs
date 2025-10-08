@@ -30,22 +30,22 @@ jobs:
           echo "RFX: ls"
           ls
           echo "RFX: import"
-          sudo VBoxManage import /tmp/UCS-Virtualbox-Image.ova --vsys 0 --eula accept
+          VBoxManage import /tmp/UCS-Virtualbox-Image.ova --vsys 0 --eula accept
           #ping -c 10 127.0.0.1
           echo "RFX: list"
-          sudo VBoxManage list vms
+          VBoxManage list vms
           echo "RFX: start"
-          sudo VBoxManage startvm "UCS 5.2-2" --type headless
+          VBoxManage startvm "UCS 5.2-2" --type headless
           ping -c 60 127.0.0.1
           echo "RFX: run"
           echo "RFX: get ip"
-          IP_ADDRESS=$(sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+          IP_ADDRESS=$(VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
           echo $IP_ADDRESS
-          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- addr add 10.1.0.65/20 dev eth0
+          VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- addr add 10.1.0.65/20 dev eth0
           echo "RFX: dhcp1"
-          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route add default via 10.1.0.1
+          VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route add default via 10.1.0.1
           echo "RFX: dhcp2"
-          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- -4 addr show eth0
+          VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- -4 addr show eth0
           echo "RFX: ping"
           ping -c 10 10.1.0.65
           #curl -v http://$IP_ADDRESS/univention/portal/
