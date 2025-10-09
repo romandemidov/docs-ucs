@@ -43,7 +43,7 @@ jobs:
           IP_ADDRESS="10.1.0.240"
           ip addr
           echo "IP_ADDRESS=$IP_ADDRESS"
-          ping -c 3 $IP_ADDRESS
+          #ping -c 3 $IP_ADDRESS
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- addr add $IP_ADDRESS/20 dev eth0
           #echo "RFX: dhcp1"
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route add default via 10.1.0.1
