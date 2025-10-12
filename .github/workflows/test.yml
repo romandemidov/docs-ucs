@@ -59,7 +59,8 @@ jobs:
           echo "RFX: ip route"
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route
           echo "RFX: restart"
-          sudo systemctl restart networking
+          #sudo systemctl restart networking
+          sudo systemctl restart systemd-networkd
           echo "RFX: ping"
           ping -c 3 $IP_ADDRESS
           curl -v http://$IP_ADDRESS/univention/portal/
