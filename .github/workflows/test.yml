@@ -61,6 +61,7 @@ jobs:
           echo "RFX: restart"
           #sudo systemctl restart networking
           sudo systemctl restart systemd-networkd
+          sleep 20
           echo "RFX: ip addr"
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- addr
           echo "RFX: ping"
