@@ -62,7 +62,7 @@ jobs:
           #sudo systemctl restart networking
           sudo systemctl restart systemd-networkd
           echo "RFX: ip addr"
-          #sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- addr
+          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- addr
           echo "RFX: ping"
           ping -c 3 $IP_ADDRESS
           curl -v http://$IP_ADDRESS/univention/portal/
