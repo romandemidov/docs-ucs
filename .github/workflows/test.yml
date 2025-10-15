@@ -58,6 +58,10 @@ jobs:
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- -4 addr show eth0
           echo "RFX: ip route"
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route
+          echo "RFX: ip route del"
+          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route del 169.254.0.0/16
+          echo "RFX: ip route"
+          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route
           echo "RFX: restart"
           #sudo systemctl restart networking
           #sudo systemctl restart systemd-networkd
