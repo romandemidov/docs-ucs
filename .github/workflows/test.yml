@@ -46,8 +46,9 @@ jobs:
           ip route
           echo "IP_ADDRESS=$IP_ADDRESS"
           #ping -c 3 $IP_ADDRESS
-          echo "RFX: set network"
-          sudo VBoxManage controlvm "UCS 5.2-2" nic1 bridged eth0
+          echo "RFX: showvminfo"
+          sudo VBoxManage showvminfo "UCS 5.2-2" --details
+          #sudo VBoxManage controlvm "UCS 5.2-2" nic1 bridged eth0
           echo "RFX: ip route"
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route
           echo "RFX: ip addr add"
