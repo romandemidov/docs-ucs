@@ -68,9 +68,9 @@ jobs:
           echo "RFX: ip route flush cache"
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route flush cache
           echo "RFX: drop ip addr"
-          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/dhclient" --username root --password onlyoffice --wait-stdout -- -r
+          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/dhclient" --username root --password onlyoffice --wait-stdout -- -r eth0
           echo "RFX: get new ip addr"
-          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/dhclient" --username root --password onlyoffice --wait-stdout --
+          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/dhclient" --username root --password onlyoffice --wait-stdout -- -v eth0
           #echo "RFX: restart"
           #sudo systemctl restart networking
           #sudo systemctl restart systemd-networkd
