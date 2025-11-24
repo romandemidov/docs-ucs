@@ -46,8 +46,8 @@ jobs:
           ip route
           echo "IP_ADDRESS=$IP_ADDRESS"
           #ping -c 3 $IP_ADDRESS
-          echo "RFX: showvminfo"
-          sudo VBoxManage showvminfo "UCS 5.2-2" --details
+          #echo "RFX: showvminfo"
+          #sudo VBoxManage showvminfo "UCS 5.2-2" --details
           #sudo VBoxManage controlvm "UCS 5.2-2" nic1 bridged eth0
           echo "RFX: ip route"
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route
@@ -65,6 +65,8 @@ jobs:
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route del 169.254.0.0/16
           echo "RFX: ip route"
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route
+          echo "RFX: ip route flush cache"
+          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/ip" --username root --password onlyoffice --wait-stdout -- route flush cache
           echo "RFX: drop ip addr"
           sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/sbin/dhclient" --username root --password onlyoffice --wait-stdout -- -r
           echo "RFX: get new ip addr"
