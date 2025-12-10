@@ -47,6 +47,8 @@ jobs:
           echo "RFX: my ip route"
           ip route
           echo "IP_ADDRESS=$IP_ADDRESS"
+          echo "RFX: ping google.com"
+          sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ping" --username root --password onlyoffice --wait-stdout -- -c 3 google.com
           #ping -c 3 $IP_ADDRESS
           #echo "RFX: showvminfo"
           #sudo VBoxManage showvminfo "UCS 5.2-2" --details
