@@ -34,6 +34,7 @@ jobs:
           #ping -c 10 127.0.0.1
           echo "RFX: list"
           #sudo VBoxManage list vms
+          sudo VBoxManage controlvm "UCS 5.2-2" nic1 nat eth0
           echo "RFX: start"
           sudo VBoxManage startvm "UCS 5.2-2" --type headless
           ping -c 60 127.0.0.1
