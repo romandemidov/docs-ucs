@@ -41,6 +41,7 @@ jobs:
           ping -c 20 127.0.0.1
           echo "RFX: run"
           echo "RFX: my ip"
+          ip addr
           IP_ADDRESS=$(sudo VBoxManage guestcontrol "UCS 5.2-2" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
           #IP_ADDRESS="10.1.0.240"
           #ip addr add 169.254.60.165/16 dev eth0
