@@ -37,7 +37,7 @@ jobs:
           echo "RFX: my ip"
           ip addr
           echo "RFX: VM ip"
-          sudo VBoxManage guestcontrol "ubuntuserver24" run --exe "/usr/bin/ip" --username root --password onlyoffice --wait-stdout -- addr
+          sudo VBoxManage guestcontrol "ubuntuserver24" run --exe "/usr/bin/ip" --username roman --password onlyoffice --wait-stdout -- addr
           echo "RFX: ping google.com"
-          sudo VBoxManage guestcontrol "ubuntuserver24" run --exe "/usr/bin/ping" --username root --password onlyoffice --wait-stdout -- -c 3 google.com
+          sudo VBoxManage guestcontrol "ubuntuserver24" run --exe "/usr/bin/ping" --username roman --password onlyoffice --wait-stdout -- -c 3 google.com
 
