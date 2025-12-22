@@ -17,8 +17,8 @@ jobs:
           sudo apt install -y virtualbox virtualbox-ext-pack
           cd /tmp
           echo "RFX: wget"
-          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/P5hYhrpE8HvUHQ
-          mv P5hYhrpE8HvUHQ USC-VB-Image.part.aa
+          wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/-r69ghByJaBHyw
+          mv -r69ghByJaBHyw USC-VB-Image.part.aa
           #wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/OaoYxoSbG_kCdA
           #mv OaoYxoSbG_kCdA USC-VB-Image.part.ab
           #wget --progress=dot:giga https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/etZQraS9HTTBXA
@@ -34,7 +34,7 @@ jobs:
           sudo VBoxManage list vms
           echo "RFX: start"
           sudo VBoxManage startvm "Deb13" --type headless
-          ping -c 20 127.0.0.1
+          ping -c 30 127.0.0.1
           echo "RFX: my ip"
           ip addr
           echo "RFX: VM ip"
